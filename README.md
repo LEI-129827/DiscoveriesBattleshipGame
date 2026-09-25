@@ -1,6 +1,6 @@
 Nós somos o grupo que fez fork inicialmente e por isso não temos os commits relacionados ao ReadMe registados neste repositório.
 
-# Rapazes
+# Software Engineers
 
 **Curso:** Licenciatura em Engenharia Informática (LEI)
 
