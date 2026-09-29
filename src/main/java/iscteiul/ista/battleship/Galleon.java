@@ -1,15 +1,28 @@
-/**
- *
- */
 package iscteiul.ista.battleship;
 
+/**
+ * Representa um Galeão ("Galleon") no jogo da Batalha Naval.
+ * O galeão é um navio de grande dimensão que ocupa 5 posições na grelha de jogo.
+ *
+ * @author Nome do Aluno
+ * @version 1.0
+ */
 public class Galleon extends Ship {
+
+    /** Tamanho do galeão (5 unidades). */
     private static final Integer SIZE = 5;
+
+    /** Nome predefinido do navio em português. */
     private static final String NAME = "Galeao";
 
     /**
-     * @param bearing
-     * @param pos
+     * Constrói um novo Galeão com a orientação e posição de referência especificadas.
+     * Preenche a lista de posições ocupadas pelo navio com base na orientação fornecida.
+     *
+     * @param bearing orientação cardeal do navio (NORTH, SOUTH, EAST, WEST)
+     * @param pos     posição inicial de referência na grelha
+     * @throws NullPointerException se a orientação (bearing) for nula
+     * @throws IllegalArgumentException se a orientação fornecida for inválida
      */
     public Galleon(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Galleon.NAME, bearing, pos);
@@ -36,16 +49,21 @@ public class Galleon extends Ship {
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Obtém o tamanho do galeão.
      *
-     * @see battleship.Ship#getSize()
+     * @return o tamanho do navio como Integer (5)
      */
     @Override
     public Integer getSize() {
         return Galleon.SIZE;
     }
 
+    /**
+     * Preenche a lista de posições do galeão quando orientado a Norte.
+     *
+     * @param pos posição inicial de referência
+     */
     private void fillNorth(IPosition pos) {
         for (int i = 0; i < 3; i++) {
             getPositions().add(new Position(pos.getRow(), pos.getColumn() + i));
@@ -54,6 +72,11 @@ public class Galleon extends Ship {
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn() + 1));
     }
 
+    /**
+     * Preenche a lista de posições do galeão quando orientado a Sul.
+     *
+     * @param pos posição inicial de referência
+     */
     private void fillSouth(IPosition pos) {
         for (int i = 0; i < 2; i++) {
             getPositions().add(new Position(pos.getRow() + i, pos.getColumn()));
@@ -63,6 +86,11 @@ public class Galleon extends Ship {
         }
     }
 
+    /**
+     * Preenche a lista de posições do galeão quando orientado a Este.
+     *
+     * @param pos posição inicial de referência
+     */
     private void fillEast(IPosition pos) {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
         for (int i = 1; i < 4; i++) {
@@ -71,6 +99,11 @@ public class Galleon extends Ship {
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn()));
     }
 
+    /**
+     * Preenche a lista de posições do galeão quando orientado a Oeste.
+     *
+     * @param pos posição inicial de referência
+     */
     private void fillWest(IPosition pos) {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
         for (int i = 1; i < 4; i++) {
