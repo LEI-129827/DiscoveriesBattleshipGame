@@ -1,6 +1,9 @@
 /**
- *
- */
+* Representa a frota de navios de um jogador no jogo da Batalha Naval.
+*
+* A frota mantém uma lista de navios e permite adicionar, consultar
+* e obter informação sobre os navios que a constituem.  
+*/
 package iscteiul.ista.battleship;
 
 import java.util.ArrayList;
@@ -8,33 +11,32 @@ import java.util.List;
 
 public class Fleet implements IFleet {
     /**
-     * This operation prints all the given ships
+     * Imprime todos os navios existentes na lista indicada. 
      *
-     * @param ships The list of ships
+     * @param ships lista de navios a imprimir
      */
     static void printShips(List<IShip> ships) {
         for (IShip ship : ships)
             System.out.println(ship);
-    }
+    }    
+    
+    private List<IShip> ships;/** Lista de navios pertencentes à frota. */
 
-    // -----------------------------------------------------
-
-    private List<IShip> ships;
-
-    public Fleet() {
+    public Fleet() {/** Cria uma frota vazia. */
         ships = new ArrayList<>();
     }
 
     @Override
-    public List<IShip> getShips() {
+    public List<IShip> getShips() {/** Devolve a lista de navios pertencentes à frota.  @return lista de navios da frota */
         return ships;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.IFleet#addShip(battleship.IShip)
-     */
+    /**Adiciona um navio à frota caso este possa ser colocado no tabuleiro não entre em colisão ou fique demasiado próximo de outro navio e a capacidade da frota não seja excedida.
+    *
+    * @param s navio a adicionar à frota
+    * @return {@code true} se o navio foi adicionado; {@code false} caso
+    * contrário 
+    */
     @Override
     public boolean addShip(IShip s) {
         boolean result = false;
@@ -45,11 +47,12 @@ public class Fleet implements IFleet {
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.IFleet#getShipsLike(java.lang.String)
-     */
+    /**
+    * Devolve os navios pertencentes a uma determinada categoria.
+    *
+    * @param category categoria dos navios a procurar
+    * @return lista dos navios pertencentes à categoria indicada
+    */
     @Override
     public List<IShip> getShipsLike(String category) {
         List<IShip> shipsLike = new ArrayList<>();
@@ -60,11 +63,11 @@ public class Fleet implements IFleet {
         return shipsLike;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.IFleet#getFloatingShips()
-     */
+   /**
+   * Devolve os navios da frota que ainda estão a flutuar.
+   *
+   * @return lista dos navios que ainda não foram afundados
+   */
     @Override
     public List<IShip> getFloatingShips() {
         List<IShip> floatingShips = new ArrayList<>();
@@ -75,11 +78,12 @@ public class Fleet implements IFleet {
         return floatingShips;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.IFleet#shipAt(battleship.IPosition)
-     */
+    /**
+    * Procura o navio que ocupa uma determinada posição do tabuleiro.
+    *
+    * @param pos posição do tabuleiro a consultar
+    * @return o navio que ocupa a posição indicada, ou {@code null} caso nenhum navio a ocupe
+    */
     @Override
     public IShip shipAt(IPosition pos) {
         for (int i = 0; i < ships.size(); i++)
@@ -88,11 +92,23 @@ public class Fleet implements IFleet {
         return null;
     }
 
+    /**
+    * Verifica se um navio se encontra completamente dentro dos limites * do tabuleiro.
+    *
+    * @param s navio a verificar
+    * @return {@code true} se o navio estiver dentro do tabuleiro; {@code false} caso contrário
+    */
     private boolean isInsideBoard(IShip s) {
         return (s.getLeftMostPos() >= 0 && s.getRightMostPos() <= BOARD_SIZE - 1 && s.getTopMostPos() >= 0
                 && s.getBottomMostPos() <= BOARD_SIZE - 1);
     }
 
+    /**
+    * Verifica se a colocação de um navio cria um risco de colisão ou proximidade excessiva com algum dos navios existentes na frota.
+    *
+    * @param s navio a verificar 
+    * @return {@code true} se existir risco de colisão ou proximidade; {@code false} caso contrário
+    */
     private boolean colisionRisk(IShip s) {
         for (int i = 0; i < ships.size(); i++) {
             if (ships.get(i).tooCloseTo(s))
@@ -103,8 +119,8 @@ public class Fleet implements IFleet {
 
 
     /**
-     * This operation shows the state of a fleet
-     */
+    * Apresenta o estado atual da frota, mostrando todos os navios, os navios que ainda estão a flutuar e os navios agrupados por categoria.
+    */
     public void printStatus() {
         printAllShips();
         printFloatingShips();
@@ -116,11 +132,10 @@ public class Fleet implements IFleet {
     }
 
     /**
-     * This operation prints all the ships of a fleet belonging to a particular
-     * category
-     *
-     * @param category The category of ships of interest
-     */
+    * Imprime todos os navios da frota pertencentes a uma determinada categoria. 
+    * 
+    * @param category categoria dos navios a imprimir
+    */
     public void printShipsByCategory(String category) {
         assert category != null;
 
@@ -128,15 +143,15 @@ public class Fleet implements IFleet {
     }
 
     /**
-     * This operation prints all the ships of a fleet but not yet shot
-     */
+    * Imprime todos os navios da frota que ainda estão a flutuar.
+    */
     public void printFloatingShips() {
         printShips(getFloatingShips());
     }
 
     /**
-     * This operation prints all the ships of a fleet
-     */
+    * Imprime todos os navios pertencentes à frota.
+    */
     void printAllShips() {
         printShips(ships);
     }
