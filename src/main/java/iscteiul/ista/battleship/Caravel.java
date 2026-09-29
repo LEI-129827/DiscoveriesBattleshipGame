@@ -1,16 +1,20 @@
-/**
- *
- */
+/** 
+* Representa uma caravela no jogo da Batalha Naval. 
+* A caravela é um navio de tamanho 2, ocupando duas posições consecutivas na grelha, na horizontal ou na vertical, de acordo com a sua orientação. 
+*/
 package iscteiul.ista.battleship;
 
 public class Caravel extends Ship {
-    private static final Integer SIZE = 2;
-    private static final String NAME = "Caravela";
+    private static final Integer SIZE = 2; /** Tamanho da caravela. */
+    private static final String NAME = "Caravela";/** Nome da Caravela*/
 
     /**
-     * @param bearing the bearing where the Caravel heads to
-     * @param pos     initial point for positioning the Caravel
-     */
+    * Cria uma nova caravela com a orientação e posição inicial indicadas.  
+    * @param bearing orientação da caravela 
+    * @param pos posição inicial da caravela 
+    * @throws NullPointerException se a orientação for nula 
+    * @throws IllegalArgumentException se a orientação for inválida
+    */
     public Caravel(Compass bearing, IPosition pos) throws NullPointerException, IllegalArgumentException {
         super(Caravel.NAME, bearing, pos);
 
@@ -34,11 +38,11 @@ public class Caravel extends Ship {
 
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see battleship.Ship#getSize()
-     */
+    /**
+    * Devolve o tamanho da caravela. 
+    *
+    * @return tamanho da caravela, que é 2 
+    */
     @Override
     public Integer getSize() {
         return SIZE;
