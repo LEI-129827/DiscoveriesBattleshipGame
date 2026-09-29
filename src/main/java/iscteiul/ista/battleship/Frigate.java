@@ -51,4 +51,4 @@ public class Frigate extends Ship {
         return Frigate.SIZE;
     }
 
-}
+} 
