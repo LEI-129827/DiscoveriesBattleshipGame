@@ -1,0 +1,15 @@
+name: PR Reviewer Notification
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      
+name: Log PR Creation
+      run: |
+        echo "A new Pull Request (#${{ github.event.pull_request.number }}) was opened by ${{ github.actor }}!"
+        echo "Please review the PR here: ${{ github.event.pull_request.html_url }}"
