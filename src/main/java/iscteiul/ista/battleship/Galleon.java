@@ -113,7 +113,7 @@ public class Galleon extends Ship {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
         for (int i = 1; i < 4; i++) {
             getPositions().add(new Position(pos.getRow() + 1, pos.getColumn() + i - 1));
-        }
+        } 
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn()));
     }
 
