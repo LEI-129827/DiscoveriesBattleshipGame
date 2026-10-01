@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Alterei este código pelo IntelliJ, e vou dar submit e pull.
  * Implementa as principais operações de uma partida de batalha naval.
  *
  * @author fba
