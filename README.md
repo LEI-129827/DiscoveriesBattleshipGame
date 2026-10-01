@@ -22,7 +22,6 @@ Nós somos o grupo que fez fork inicialmente e por isso não temos os commits re
 | Navio de 3 canhões |      Nau       | Carrack |    3     |    2    |
 | Navio de 2 canhões |    Caravela    | Caravel |    2     |    3    |
 |     Submarino      |     Barca      |  Barge  |    1     |    4    |
-
 ---
 
 ## História das embarcações
