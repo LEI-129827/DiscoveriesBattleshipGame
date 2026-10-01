@@ -1,4 +1,4 @@
-```java
+
 /**
  * Representa um navio da batalha naval.
  */
@@ -112,4 +112,3 @@ public interface IShip {
      */
     void shoot(IPosition pos);
 }
-```

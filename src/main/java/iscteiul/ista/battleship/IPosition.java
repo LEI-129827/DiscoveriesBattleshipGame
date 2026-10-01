@@ -1,4 +1,4 @@
-```java
+
 /**
  * Representa uma posição na grelha do jogo.
  */
@@ -66,4 +66,3 @@ public interface IPosition {
      */
     boolean isHit();
 }
-```

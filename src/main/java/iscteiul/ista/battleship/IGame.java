@@ -1,4 +1,4 @@
-```java
+
 /**
  * Representa o jogo de batalha naval.
  */
@@ -71,4 +71,3 @@ public interface IGame {
      */
     void printFleet();
 }
-```

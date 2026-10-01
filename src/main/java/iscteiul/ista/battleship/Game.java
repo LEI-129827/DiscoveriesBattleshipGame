@@ -1,4 +1,4 @@
-```java
+
 /**
  * Representa uma partida do jogo de batalha naval.
  */
@@ -201,4 +201,3 @@ public class Game implements IGame {
         printBoard(shipPositions, '#');
     }
 }
-```

@@ -57,7 +57,6 @@ public class Galleon extends Ship {
      * Returns the size of the Galleon ship.
      *
      * @return the number of grid positions occupied by the Galleon (always 5)
-     * @see battleship.Ship#getSize()
      */
     @Override
     public Integer getSize() {
